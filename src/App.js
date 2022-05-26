@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './assets/img/pizza-logo.svg';
 import Header from './Header'
-const Button =()=>{
-  return <button>Add</button>
-}
+import Button from './Button'
 
 function App() {
   return (
     <div className="wrapper">
   <Header/>
+  <Button outline/>
+  <Button />
     <div className="content">
       <div className="container">
         <div className="content__top">
