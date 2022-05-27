@@ -1,17 +1,17 @@
 import React from 'react';
 import { Header, Categories} from './components';
-
 function App() {
 
 
   return (
     <div className="wrapper">
+      
   <Header/>
     <div className="content">
       <div className="container">
         <div className="content__top">
        <Categories
-       onClick={(name)=>{console.log(name)}}
+       onClickItem={(name)=>{console.log(name)}}
        items={[
          'Мясные',
          'Вегетарианские',
