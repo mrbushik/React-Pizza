@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route } from 'react-router-dom';
-import {Home} from './pages/Home'
-import {Cart} from './pages/Cart'
+import { BrowserRouter } from 'react-router-dom';
 
 import './scss/app.scss'
 import App from './App';
