@@ -18,7 +18,14 @@ import { Header, Categories,SortPopUp} from './components';
          'Острые',
          'Закрытые',
        ]}/>
-        <SortPopUp/>
+       
+        <SortPopUp 
+        items={[
+          'популярности',
+          'цена',
+          'алфавит'
+        ]}
+        />
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">

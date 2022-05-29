@@ -1,8 +1,8 @@
 import React  from 'react'
 
-function SortPopUp() {
+function SortPopUp({items}) {
     const [visiblePopup, setVisiblePopup] = React.useState(false)
-
+    const [activeItem, setActiveItem] = React.useState(0)
     const sortRef =React.useRef()
     
 const toggleVisiblePopup = ()=>{
@@ -11,7 +11,6 @@ setVisiblePopup(!visiblePopup)
 
 const handleOutsideClick = (event) => {
     const path = event.path || (event.composedPath && event.composedPath());
-    console.log(path);
     if (!path.includes(sortRef.current)) {
       setVisiblePopup(false);
     }
@@ -44,9 +43,12 @@ document.body.addEventListener('click', handleOutsideClick)
             </div>
        {visiblePopup &&     <div className="sort__popup">
               <ul>
-                <li className="active">популярности</li>
-                <li>цене</li>
-                <li>алфавиту</li>
+                {items.map((item, i)=><li
+                onClick={()=>setActiveItem(i)}
+                className={activeItem === i ? 'active' : ''}
+                key={`${item}_${i}`}>{item}
+                </li>)}
+                
               </ul>
             </div>}
           </div>
