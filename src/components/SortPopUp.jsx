@@ -4,6 +4,7 @@ function SortPopUp({items}) {
     const [visiblePopup, setVisiblePopup] = React.useState(false)
     const [activeItem, setActiveItem] = React.useState(0)
     const sortRef =React.useRef()
+    const activeLabel = items[activeItem]
     
 const toggleVisiblePopup = ()=>{
 setVisiblePopup(!visiblePopup)
@@ -16,6 +17,11 @@ const handleOutsideClick = (event) => {
     }
   };
 
+  const onSelectItem = (index) => {
+    setActiveItem(index)
+    setVisiblePopup(false);
+  } 
+
 React.useEffect(()=>{
 document.body.addEventListener('click', handleOutsideClick)
 }, [])
@@ -27,6 +33,7 @@ document.body.addEventListener('click', handleOutsideClick)
       className="sort">
             <div className="sort__label">
               <svg
+              className={visiblePopup ? 'rotated' : ''}
                 width="10"
                 height="6"
                 viewBox="0 0 10 6"
@@ -39,12 +46,12 @@ document.body.addEventListener('click', handleOutsideClick)
                 />
               </svg>
               <b>Сортировка по:</b>
-              <span onClick={toggleVisiblePopup}>популярности</span>
+              <span onClick={toggleVisiblePopup}>{activeLabel}</span>
             </div>
        {visiblePopup &&     <div className="sort__popup">
               <ul>
                 {items.map((item, i)=><li
-                onClick={()=>setActiveItem(i)}
+                onClick={()=>onSelectItem(i)}
                 className={activeItem === i ? 'active' : ''}
                 key={`${item}_${i}`}>{item}
                 </li>)}
