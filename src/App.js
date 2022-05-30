@@ -8,17 +8,17 @@ import { Route, Routes } from 'react-router-dom';
 React.useEffect(()=>{
   fetch('http://localhost:3000/db.json')
   .then((resp)=>resp.json())
-  .then(json => console.log(json.pizzas))
+  .then(json => {
+    setPizzas(json.pizzas)
+  })
 },[])
-console.log(pizzas);
-
 
   return (
     <div className="wrapper">
   <Header/>
     <div className="content">
     <Routes>
-<Route path="/" element={<Home />} exact />
+<Route path="/" element={<Home items={pizzas}/>} exact/>
 <Route path="/cart" element={<Cart />} exact />
     </Routes>
     </div>
