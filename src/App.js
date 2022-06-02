@@ -24,12 +24,13 @@ window.store.dispatch(setPizzas(data.pizzas))
   })
   }
   render() {
+    console.log(this.props.items);
     return (
       <div className="wrapper">
     <Header/>
       <div className="content">
       <Routes>
-  <Route path="/" element={<Home items={[]}/>} exact/>
+  <Route path="/" element={<Home items={this.props.items} />} exact/>
   <Route path="/cart" element={<Cart />} exact />
       </Routes>
       </div>
