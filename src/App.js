@@ -21,7 +21,8 @@ class App extends React.Component {
   componentDidMount(){
     axios.get('http://localhost:3000/db.json').then(({data}) =>{
 window.store.dispatch(setPizzas(data.pizzas))
-  })
+console.log('getting data');
+})
   }
   render() {
     console.log(this.props.items);
@@ -30,7 +31,7 @@ window.store.dispatch(setPizzas(data.pizzas))
     <Header/>
       <div className="content">
       <Routes>
-  <Route path="/" element={<Home items={this.props.items} />} exact/>
+  <Route path="/" element={<Home items={[this.props.items]} />} exact/>
   <Route path="/cart" element={<Cart />} exact />
       </Routes>
       </div>
@@ -41,7 +42,7 @@ window.store.dispatch(setPizzas(data.pizzas))
 
 const mapStateToProps = (state)=>{
   return{
-items: state.pizzas.item
+items: state.pizzas.items,
   }
 }
 
