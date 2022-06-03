@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 function PizzaBlock({name, imageUrl, price, types, sizes}) {
   const avaibleTypes = ['тонкое', 'традиционное']
   const avaibleSizes  = [26, 30,40]
+ 
   const [activeType, setActiveType] = React.useState(types[0])
   const [activeSize, setActiveSize] = React.useState(sizes[0])
- const onSelectType = (index)=>{
+ 
+  const onSelectType = (index)=>{
    setActiveType(index)
  }
   
