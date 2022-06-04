@@ -4,7 +4,7 @@ import {Categories,SortPopUp, PizzaBlock} from '../components';
 function Home({items}) {
   return (
     <>
-<div className="container">
+      <div className="container">
         <div className="content__top">
        <Categories
        items={[

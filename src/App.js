@@ -30,7 +30,7 @@ class App extends React.Component {
         <Header />
         <div className="content">
         <Routes>
-<Route path="/" element={<Home items={[this.props.items]} />} exact/>
+<Route path="/" element={<Home items={this.props.items} />} exact/>
 <Route path="/cart" element={<Cart />} exact />
     </Routes>
         </div>

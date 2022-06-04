@@ -19,12 +19,12 @@ function PizzaBlock({name, imageUrl, price, types, sizes}) {
 
   return (
     <>
-        <div className="pizza-block">
-<img
+<div className="pizza-block">
+ <img
   className="pizza-block__image"
   src={imageUrl}
   alt="Pizza"
-/>
+  />
 <h4 className="pizza-block__title">{name}</h4>
 <div className="pizza-block__selector">
   <ul>
@@ -38,7 +38,6 @@ function PizzaBlock({name, imageUrl, price, types, sizes}) {
     })}>
       {type}</li>
     ))}
-
   </ul>
   <ul>
   {avaibleSizes.map((size, index) =>(
@@ -84,6 +83,7 @@ price: PropTypes.number.isRequired,
 types: PropTypes.arrayOf(PropTypes.number),
 sizes: PropTypes.arrayOf(PropTypes.number)
 };
+
 PizzaBlock.defaultProps ={
   name: '',
   price: 0,

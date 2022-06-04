@@ -25,7 +25,6 @@ const handleOutsideClick = (event) => {
 React.useEffect(()=>{
 document.body.addEventListener('click', handleOutsideClick)
 }, [])
-
   return (
     <>
       <div 
@@ -54,8 +53,7 @@ document.body.addEventListener('click', handleOutsideClick)
                 onClick={()=>onSelectItem(i)}
                 className={activeItem === i ? 'active' : ''}
                 key={`${obj.name}_${i}`}>{obj.name}
-                </li>)}
-                
+                </li>)}  
               </ul>
             </div>}
           </div>
