@@ -29,16 +29,6 @@ function App({setPizzas, items}) {
   )
 }
 
-// class Ap extends React.Component {
-//   componentDidMount() {
-//     axios.get('http://localhost:3000/db.json').then(({ data }) => {
-//       this.props.setPizzas(data.pizzas);
-//     });
-//   }
-
-
-// }
-
 export default connect(
   (state) => {
     return {

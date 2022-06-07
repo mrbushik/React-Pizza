@@ -14,7 +14,6 @@ function Home({items}) {
          'Острые',
          'Закрытые',
        ]}/>
-       
         <SortPopUp 
         items={[
           {name:'популярности', type: 'popular'},
