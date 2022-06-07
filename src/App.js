@@ -7,9 +7,6 @@ import { Header} from './components';
 import {Home, Cart} from './pages'
 import { Route, Routes } from 'react-router-dom';
 
-
-
-
 function App({setPizzas, items}) {
   React.useEffect(()=>{
     axios.get('http://localhost:3000/db.json').then(({ data }) => {
