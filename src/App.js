@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {useSelector, useDispatch} from 'react-redux'
+import { useDispatch} from 'react-redux'
 
 import {setPizzas} from './redux/actions/pizzas'
 import { Header} from './components';
@@ -9,12 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 
 function App() {
 const dispatch = useDispatch()
-const {items}= useSelector(({pizzas,filters}) => {
-  return{
-    items: pizzas.items,
-    sortBy: filters.sortBy
-  }
-});
+
 
 // console.log(state);
   React.useEffect(()=>{
@@ -27,7 +22,7 @@ dispatch(setPizzas(data.pizzas))
         <Header />
         <div className="content">
         <Routes>
-<Route path="/" element={<Home items={items} />} exact/>
+<Route path="/" element={<Home />} exact/>
 <Route path="/cart" element={<Cart />} exact />
     </Routes>
         </div>
