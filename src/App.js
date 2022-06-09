@@ -10,20 +10,19 @@ import { Route, Routes } from 'react-router-dom';
 function App() {
 const dispatch = useDispatch()
 
-
-// console.log(state);
   React.useEffect(()=>{
-    axios.get('http://localhost:3000/db.json').then(({ data }) => {
-dispatch(setPizzas(data.pizzas))
-  });
+    axios.get('http://localhost:3001/pizzas').then(({ data }) => {
+      console.log(data);
+dispatch(setPizzas(data))
+  })
   }, [])
   return (
     <div className="wrapper">
         <Header />
         <div className="content">
         <Routes>
-<Route path="/" element={<Home />} exact/>
-<Route path="/cart" element={<Cart />} exact />
+          <Route path="/" element={<Home />} exact/>
+          <Route path="/cart" element={<Cart />} exact />
     </Routes>
         </div>
       </div>
@@ -31,17 +30,3 @@ dispatch(setPizzas(data.pizzas))
 }
 
 export default App
-
-// export default connect(
-//   (state) => {
-//     return {
-//       items: state.pizzas.items,
-//       filters: state.filters,
-//     };
-//   },
-//   (dispatch) => {
-//     return {
-//       setPizzas: (items) => dispatch(setPizzas(items)),
-//     };
-//   },
-// )(App);
