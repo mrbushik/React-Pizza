@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const fethPizzas = ()=>{
+export const fethPizzas = (dispatch)=>{
     axios.get('http://localhost:3001/pizzas').then(({ data }) => {
-  setPizzas(data)
+        dispatch(setPizzas(data))
     })
 }
 

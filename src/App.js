@@ -10,7 +10,7 @@ function App() {
 const dispatch = useDispatch()
 
   React.useEffect(()=>{
- 
+ console.log(fethPizzas())
   }, [])
   return (
     <div className="wrapper">
