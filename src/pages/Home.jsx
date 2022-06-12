@@ -1,9 +1,8 @@
 import React from 'react'
-import {Categories,SortPopUp, PizzaBlock} from '../components';
+import {Categories,SortPopUp, PizzaBlock,PizzaLoadingBlock } from '../components';
 import {useSelector, useDispatch} from 'react-redux'
 import { setCategory } from '../redux/actions/filters'
-
-
+import {fethPizzas} from '../redux/actions/pizzas'
 const categoryNames = [
   'Мясные',
   'Вегетарианские',
@@ -19,6 +18,11 @@ const sortItems = [
 function Home() {
   const dispatch = useDispatch()
   const items = useSelector(({pizzas}) => pizzas.items)
+  const isLoaded = useSelector(({pizzas}) => pizzas.isLoaded)
+
+  React.useEffect(()=>{
+      dispatch(fethPizzas())
+     }, [])
 
   const onSelectCategory = React.useCallback( index =>{
     dispatch(setCategory(index))
@@ -37,10 +41,9 @@ function Home() {
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
-          {items && items.map(obj => <PizzaBlock 
-          key={`${obj.id}`} 
-          {...obj}
-          />)}
+          {isLoaded
+           ? items.map(obj => <PizzaBlock key={`${obj.id}`} {...obj} isLoading={true}/>) 
+           : Array(12).fill(<PizzaLoadingBlock/>)}
         </div>
       </div>
     </>
