@@ -10,7 +10,7 @@ function PizzaBlock({name, imageUrl, price, types, sizes, }) {
   const avaibleSizes  = [26, 30,40]
  
   const [activeType, setActiveType] = React.useState(types[0])
-  const [activeSize, setActiveSize] = React.useState(sizes[0])
+  const [activeSize, setActiveSize] = React.useState(sizes[null])
  
   const onSelectType = (index)=>{
    setActiveType(index)

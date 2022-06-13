@@ -5,9 +5,9 @@ export const setLoaded = val =>({
     payload: val,
 })
 
-export const fethPizzas = () => (dispatch)=>{
+export const fethPizzas = (category,sortBy) => (dispatch)=>{
     dispatch(setLoaded(false))
-    axios.get('http://localhost:3001/pizzas').then(({ data }) => {
+    axios.get(`http://localhost:3001/pizzas?category=${category}`).then(({ data }) => {
         dispatch(setPizzas(data))
     })
 }
