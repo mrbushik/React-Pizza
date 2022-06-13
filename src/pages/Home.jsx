@@ -12,7 +12,7 @@ const categoryNames = [
 ]
 const sortItems = [
   {name:'популярности', type: 'popular'},
-  {name:'цена', type: 'prise'},
+  {name:'цена', type: 'price'},
   {name:'алфавит', type: 'alphabet'}
 ]
 function Home() {
@@ -22,7 +22,7 @@ function Home() {
   const { category, sortBy} = useSelector(({filters}) => filters)
 
   React.useEffect(()=>{
-      dispatch(fethPizzas(category, sortBy))
+       dispatch(fethPizzas(category, sortBy))
      }, [category, sortBy])
 
   const onSelectCategory = React.useCallback( index =>{
