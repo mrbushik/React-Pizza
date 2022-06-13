@@ -81,7 +81,7 @@ function PizzaBlock({name, imageUrl, price, types, sizes, }) {
 
 PizzaBlock.propTypes = {
 name: PropTypes.string.isRequired,
-imageUrl: PropTypes.string.isRequired,
+imageUrl: PropTypes.string,
 price: PropTypes.number.isRequired,
 types: PropTypes.arrayOf(PropTypes.number),
 sizes: PropTypes.arrayOf(PropTypes.number),

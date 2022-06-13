@@ -39,7 +39,8 @@ function Home() {
        items={categoryNames}
        />
         <SortPopUp 
-        items={sortItems}
+        activeSortType={sortBy}
+        items={sortItems} 
         />
         </div>
         <h2 className="content__title">Все пиццы</h2>

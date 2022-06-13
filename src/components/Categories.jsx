@@ -28,6 +28,6 @@ Categories.propTypes = {
   onClickCategory: PropTypes.func.isRequired,
 };
 
-Categories.defaultProps = { activeCategory: null, items: [] };
+Categories.defaultProps = { actiniveCategory: null, items: [] };
 
 export default Categories
