@@ -52,7 +52,7 @@ document.body.addEventListener('click', handleOutsideClick)
        {visiblePopup &&  <div className="sort__popup">
               <ul>
                 {items.map((obj, i)=><li
-                onClick={()=>onSelectItem(obj.type)}
+                onClick={()=>onSelectItem(obj)}
                 className={activeSortType === obj.type ? 'active' : ''}
                 key={`${obj.name}_${i}`}>{obj.name}
                 </li>)}  

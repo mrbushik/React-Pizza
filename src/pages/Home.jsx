@@ -11,9 +11,9 @@ const categoryNames = [
   'Закрытые',
 ]
 const sortItems = [
-  {name:'популярности', type: 'popular'},
-  {name:'цена', type: 'price'},
-  {name:'алфавит', type: 'alphabet'}
+  {name:'популярности', type: 'popular',  order: 'deck'},
+  {name:'цена', type: 'price',  order: 'deck'},
+  {name:'алфавит', type: 'name',  order: 'asc'}
 ]
 function Home() {
   const dispatch = useDispatch()
@@ -41,7 +41,7 @@ function Home() {
        items={categoryNames}
        />
         <SortPopUp 
-        activeSortType={sortBy}
+        activeSortType={sortBy.type}
         items={sortItems} 
         onClickSortType={onSelecSortType}
         />
