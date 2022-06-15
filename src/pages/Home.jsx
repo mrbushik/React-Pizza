@@ -27,10 +27,10 @@ function Home() {
 
   const onSelectCategory = React.useCallback( index =>{
     dispatch(setCategory(index))
-  }, [])
+  }, [dispatch])
   const onSelecSortType = React.useCallback( type =>{
     dispatch(setSortBy(type))
-  }, [])
+  }, [dispatch])
   return (
     <>
       <div className="container">
