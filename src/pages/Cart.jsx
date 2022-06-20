@@ -1,6 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import {CartItem} from '../components'
 function Cart() {
+  const {totalPrice, totalCount, items} = useSelector(({cart})=> cart)
+  console.log(items);
+  const addedPizzas = Object.keys(items).map(key=> {
+    return items[key][0]
+  })
   return (
     <>
 <div className="container container--cart">
@@ -19,11 +25,13 @@ function Cart() {
 <path d="M8.33337 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
 <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
-
                 <span>Очистить корзину</span>
               </div>
             </div>
             <div className="content__items">
+              {
+                addedPizzas.map(obj => <CartItem key={obj.id} name={obj.name} type={obj.type} size={obj.size}/>)
+              }
             <CartItem
             name='Пепперони Фреш с перцем'
             type='тонкое'
@@ -32,8 +40,8 @@ function Cart() {
             </div>
             <div className="cart__bottom">
               <div className="cart__bottom-details">
-                <span> Всего пицц: <b>3 шт.</b> </span>
-                <span> Сумма заказа: <b>900 ₽</b> </span>
+                <span> Всего пицц: <b>{totalCount} шт.</b> </span>
+                <span> Сумма заказа: <b>{totalPrice} ₽</b> </span>
               </div>
               <div className="cart__bottom-buttons">
                 <a href="/" className="button button--outline button--add go-back-btn">

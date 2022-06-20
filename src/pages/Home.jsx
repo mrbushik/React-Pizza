@@ -38,7 +38,6 @@ function Home() {
       type: 'ADD_PIZZA_CART',
       payload: obj,
     })
-    console.log(obj);
   }
   return (
     <>
