@@ -4,7 +4,7 @@ import {CartItem} from '../components'
 function Cart() {
   const {totalPrice, totalCount, items} = useSelector(({cart})=> cart)
   const addedPizzas = Object.keys(items).map(key=> {
-    return items[key][0]
+    return items[key].items[0]
   })
   return (
     <>
@@ -30,7 +30,14 @@ function Cart() {
             <div className="content__items">
               {
                 
-                addedPizzas.map(obj => <CartItem key={obj.id} name={obj.name} type={obj.type} size={obj.size} totalPrice={2}/>)
+                addedPizzas.map(obj => <CartItem 
+                 key={obj.id}
+                 name={obj.name}
+                 type={obj.type}
+                 size={obj.size}
+                 totalPrice={items[obj.id].totalPrice}
+                 totalCount={items[obj.id].items.length}
+                 />)
               }
             <CartItem
             name='Пепперони Фреш с перцем'
