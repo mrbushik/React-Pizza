@@ -7,11 +7,11 @@ const getTotalPrice = arr => arr.reduce((sum, obj) => obj.price + sum, 0);
 const cart = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_PIZZA_CART': {
-      const currentPizzaItems = !state.items[action.payload.id] 
-         ? [action.payload]
-         : [...state.items[action.payload.id].items, action.payload];
-      
-         const newItems = {
+      const currentPizzaItems = !state.items[action.payload.id] ?
+        [action.payload] :
+        [...state.items[action.payload.id].items, action.payload];
+
+      const newItems = {
         ...state.items,
         [action.payload.id]: {
           items: currentPizzaItems,
@@ -19,33 +19,40 @@ const cart = (state = initialState, action) => {
         }
       };
 
-      const items = Object.values(newItems).map((obj)=> obj.items)
-      const allPizzas = [].concat.apply([], items);
-      const totalPrice = getTotalPrice(allPizzas)
+      const totalCount = Object.keys(newItems).reduce((sum, key) => newItems[key].items.length + sum,
+        0,
+      );
+      const totalPrice = Object.keys(newItems).reduce((sum, key) => newItems[key].totalPrice + sum,
+        0,
+      );
 
       return {
         ...state,
         items: newItems,
-        totalCount: allPizzas.length,
+        totalCount,
         totalPrice,
       };
     }
     case 'CLEAR_CART':
-      return{items: {}, totalCount: 0, totalPrice: 0, }
+      return {
+        items: {}, totalCount: 0, totalPrice: 0,
+      }
 
       case 'REMOVE_CART_ITEM':
         const newItems = {
           ...state.items
         }
         const currentTotalPrice = newItems[action.payload].totalPrice
+        const currentTotalCount = newItems[action.payload].items.length
         delete newItems[action.payload]
-        return{
+        return {
           ...state,
           items: newItems,
-          totalPrice: state.totalPrice - currentTotalPrice,
+            totalPrice: state.totalPrice - currentTotalPrice,
+            totalCount: state.totalCount - currentTotalCount,
         }
-    default:
-      return state;
+        default:
+          return state;
   }
 };
 export default cart
