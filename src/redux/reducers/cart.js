@@ -3,6 +3,21 @@ const initialState = {
   totalPrice: 0,
   totalCount: 0,
 };
+const getTotalSum = (obj, key) =>{
+ const [firstKey, ...keys] = key.split('.');
+  return Object.keys(obj).reduce((sum, key) => {
+    const value = keys.reduce((val,key)=> {
+      if(typeof  val[key] === 'object'){
+        return val[key];
+      }else{
+        return val;
+      }
+     }, obj[firstKey]);
+      return sum + value;
+    },0,);
+  
+};
+
 const getTotalPrice = arr => arr.reduce((sum, obj) => obj.price + sum, 0);
 const cart = (state = initialState, action) => {
   switch (action.type) {
@@ -19,12 +34,15 @@ const cart = (state = initialState, action) => {
         }
       };
 
-      const totalCount = Object.keys(newItems).reduce((sum, key) => newItems[key].items.length + sum,
-        0,
-      );
-      const totalPrice = Object.keys(newItems).reduce((sum, key) => newItems[key].totalPrice + sum,
-        0,
-      );
+      // const totalCount = Object.keys(newItems).reduce((sum, key) => newItems[key].items.length + sum,
+      //   0,
+      // );
+      // const totalPrice = Object.keys(newItems).reduce((sum, key) => newItems[key].totalPrice + sum,
+      //   0,
+      // );
+      
+   const totalCount = (newItems, 'item.length')
+   const totalPrice = (newItems, 'item.totalPrice')
 
       return {
         ...state,
