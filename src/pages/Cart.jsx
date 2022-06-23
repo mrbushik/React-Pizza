@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import {CartItem} from '../components'
-import {clearCart, romoveCartItem} from '../redux/actions/cart'
+import {clearCart, romoveCartItem, plusItem, minusItem} from '../redux/actions/cart'
 import emptyCartImg from '../assets/img/empty-cart.png'
 function Cart() {
   const dispatch= useDispatch()
