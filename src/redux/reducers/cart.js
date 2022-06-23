@@ -34,13 +34,6 @@ const cart = (state = initialState, action) => {
           },
         };
 
-//       // const totalCount = Object.keys(newItems).reduce((sum, key) => newItems[key].items.length + sum,
-//       //   0,
-//       // );
-//       // const totalPrice = Object.keys(newItems).reduce((sum, key) => newItems[key].totalPrice + sum,
-//       //   0,
-//       // );
-
       const totalCount = getTotalSum(newItems, 'items.length')
       const totalPrice = getTotalSum(newItems, 'totalPrice')
 
@@ -70,6 +63,36 @@ const cart = (state = initialState, action) => {
             totalPrice: state.totalPrice - currentTotalPrice,
             totalCount: state.totalCount - currentTotalCount,
         }
+      // case 'PLUS_CART_ITEM':
+      //     return { 
+      //       ...state,
+      //       items: 
+      //         [action.payload]: {
+      //           items: [
+      //             state.items[action.payload].items,
+      //           state.items[action.payload].items[0]
+      //         ],
+      //           totalPrice: getTotalPrice(currentPizzaItems),
+      //         }
+      //       } 
+          // }
+          case 'PLUS_CART_ITEM': 
+          const newObjItems = [
+              ...state.items[action.payload].items,
+              state.items[action.payload].items[0]
+          ]
+          return {
+            ...state,
+            items: {
+              ...state.items,
+              [action.payload]: {
+                items: newObjItems,
+                totalPrice: getTotalPrice(newObjItems),
+              }
+            }
+          }
+          case 'MINUS_CART_ITEM':
+            return { totalPrice: 0, totalCount: 0, items: {}}
         default:
           return state;
   }
