@@ -7,7 +7,7 @@ import {clearCart, romoveCartItem, plusCartItem, minusCartItem} from '../redux/a
 import emptyCartImg from '../assets/img/empty-cart.png'
 function Cart() {
   const dispatch= useDispatch()
-  const {totalPrice, totalCount, items} = useSelector(({cart})=> cart)
+  const {totalPrice, totalCount, items, imageUrl} = useSelector(({cart})=> cart)
   
   const addedPizzas = Object.keys(items).map(key=> {
     return items[key].items[0]
@@ -65,6 +65,7 @@ const onMinusItem = (id) =>{
          onRemove={onRemoveItem}
          onMinus={onMinusItem}
          onPlus={onPlusItem}
+         imageUrl={obj.imageUrl}
          />)
       }
     </div>

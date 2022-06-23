@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './Button'
 
-function CartItem({id,name, type, size, totalPrice, totalCount, onRemove, onPlus, onMinus}) {
+function CartItem({id,name, type, size, totalPrice, totalCount, onRemove, onPlus, onMinus, imageUrl }) {
 
   const handlePlusItem =()=>{
     onPlus(id)
@@ -13,13 +13,14 @@ function CartItem({id,name, type, size, totalPrice, totalCount, onRemove, onPlus
   const handleRemoveClick = () => {
     onRemove(id)
   }
+  console.log(imageUrl);
   return (
     <>
       <div className="cart__item">
   <div className="cart__item-img">
     <img
       className="pizza-block__image"
-      src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+     src={imageUrl}
       alt="Pizza"
     />
   </div>
