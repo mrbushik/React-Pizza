@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 
-import {CartItem} from '../components'
+import {CartItem, Button} from '../components'
 import {clearCart, romoveCartItem, plusCartItem, minusCartItem} from '../redux/actions/cart'
 import emptyCartImg from '../assets/img/empty-cart.png'
 function Cart() {
@@ -27,6 +27,10 @@ const onPlusItem = (id) =>{
 }
 const onMinusItem = (id) =>{
   dispatch(minusCartItem(id))
+}
+
+const onClickOrder = ()=> {
+console.log("ВАШ ЗАКАЗ", items);
 }
 
   return (
@@ -83,14 +87,14 @@ const onMinusItem = (id) =>{
       <span>Вернуться назад</span>
     </Link>
         </a>
-        <div className="button pay-btn">
+        <Button onClick={onClickOrder} className="pay-btn">
           <span>Оплатить сейчас</span>
-        </div>
+        </Button>
       </div>
     </div>
   </div>
     : <div className="cart cart--empty">
-    <h2>Корзина пустая <icon>😕</icon></h2>
+    <h2>Корзина пустая <i>😕</i></h2>
     <p>
       Вероятней всего, вы не заказывали ещё пиццу.<br />
       Для того, чтобы заказать пиццу, перейди на главную страницу.
