@@ -1,23 +1,21 @@
-import React from 'react';
+import React from "react";
 
-import { Header} from './components';
-import {Home, Cart} from './pages'
-import { Route, Routes } from 'react-router-dom';
+import { Header } from "./components";
+import { Home, Cart } from "./pages";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-
-
   return (
     <div className="wrapper">
-        <Header />
-        <div className="content">
+      <Header />
+      <div className="content">
         <Routes>
-          <Route path="/" element={<Home />} exact/>
+          <Route path="/" element={<Home />} exact />
           <Route path="/cart" element={<Cart />} exact />
-    </Routes>
-        </div>
+        </Routes>
       </div>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

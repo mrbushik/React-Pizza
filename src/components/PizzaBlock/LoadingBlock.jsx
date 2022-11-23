@@ -1,5 +1,5 @@
-import React from 'react';
-import ContentLoader from 'react-content-loader';
+import React from "react";
+import ContentLoader from "react-content-loader";
 
 function LoadingBlock() {
   return (
@@ -10,7 +10,8 @@ function LoadingBlock() {
       height={460}
       viewBox="0 0 280 460"
       backgroundColor="#f3f3f3"
-      foregroundColor="#ecebeb">
+      foregroundColor="#ecebeb"
+    >
       <circle cx="129" cy="133" r="128" />
       <rect x="-2" y="273" rx="6" ry="6" width="280" height="26" />
       <rect x="-2" y="313" rx="6" ry="6" width="280" height="84" />

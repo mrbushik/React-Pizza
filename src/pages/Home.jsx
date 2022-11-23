@@ -1,13 +1,24 @@
-import React from 'react';
-import { Categories, SortPopUp, PizzaBlock, PizzaLoadingBlock } from '../components';
-import { useSelector, useDispatch } from 'react-redux';
-import { setCategory, setSortBy } from '../redux/actions/filters';
-import { fethPizzas } from '../redux/actions/pizzas';
-const categoryNames = ['Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'Закрытые'];
+import React from "react";
+import {
+  Categories,
+  SortPopUp,
+  PizzaBlock,
+  PizzaLoadingBlock,
+} from "../components";
+import { useSelector, useDispatch } from "react-redux";
+import { setCategory, setSortBy } from "../redux/actions/filters";
+import { fethPizzas } from "../redux/actions/pizzas";
+const categoryNames = [
+  "Мясные",
+  "Вегетарианские",
+  "Гриль",
+  "Острые",
+  "Закрытые",
+];
 const sortItems = [
-  { name: 'популярности', type: 'popular', order: 'deck' },
-  { name: 'цена', type: 'price', order: 'deck' },
-  { name: 'алфавит', type: 'name', order: 'asc' },
+  { name: "популярности", type: "popular", order: "deck" },
+  { name: "цена", type: "price", order: "deck" },
+  { name: "алфавит", type: "name", order: "asc" },
 ];
 function Home() {
   const dispatch = useDispatch();
@@ -24,17 +35,17 @@ function Home() {
     (index) => {
       dispatch(setCategory(index));
     },
-    [dispatch],
+    [dispatch]
   );
   const onSelecSortType = React.useCallback(
     (type) => {
       dispatch(setSortBy(type));
     },
-    [dispatch],
+    [dispatch]
   );
   const handleAddPizzaToCart = (obj) => {
     dispatch({
-      type: 'ADD_PIZZA_CART',
+      type: "ADD_PIZZA_CART",
       payload: obj,
     });
   };
@@ -59,7 +70,9 @@ function Home() {
             ? items.map((obj) => (
                 <PizzaBlock
                   onClickAddPizza={(obj) => handleAddPizzaToCart(obj)}
-                  addedCount={cartItems[obj.id] && cartItems[obj.id].items.length}
+                  addedCount={
+                    cartItems[obj.id] && cartItems[obj.id].items.length
+                  }
                   key={`${obj.id}`}
                   {...obj}
                 />
